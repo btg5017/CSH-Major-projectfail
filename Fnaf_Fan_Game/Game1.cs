@@ -9,6 +9,12 @@ namespace Fnaf_Fan_Game
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private int time;
+        private int energy;
+        private int ritchieProgress;
+        private int roarieProgress;
+        private int ballonRoarieProgress;
+        private int concreteManProgress;
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
