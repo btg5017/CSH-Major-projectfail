@@ -72,8 +72,6 @@ namespace Fnaf_Fan_Game
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-            
-            // TODO: Add your update logic here
 
             // === LOGIC FOR LOSING ===
             if(energy == 0)
@@ -113,11 +111,7 @@ namespace Fnaf_Fan_Game
                 //game loop with all logic updates and controls.
                 }
 
-
-
-
-
-                    base.Update(gameTime);
+            base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
