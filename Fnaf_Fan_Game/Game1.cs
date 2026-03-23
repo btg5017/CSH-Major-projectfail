@@ -9,13 +9,36 @@ namespace Fnaf_Fan_Game
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        private Random random;
+
         private int time;
         private int energy;
+        private int endTime;
+
         private int ritchieProgress;
         private int roarieProgress;
-        private int ballonRoarieProgress;
+        private int balloonRitchieProgress;
         private int concreteManProgress;
-        private Random random;
+
+        enum gameState
+        {
+            menu = 1,
+            inRoom = 2,
+            cams = 3,
+            dead = 4,
+            win = 5
+        }
+        enum Rooms
+        {
+            swoom = 1,
+            userCenter = 2,
+            vader = 3,
+            outsideLougne = 4,
+            northside = 5,
+            cryingCorner = 6,
+            projectRoom = 7,
+            loserCenter = 8
+        }
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -27,13 +50,15 @@ namespace Fnaf_Fan_Game
         {
             // TODO: Add your initialization logic here
             time = 0;
+            endTime = 21600;
             energy = 100;
             ritchieProgress = 0;
             roarieProgress = 0;
-            ballonRoarieProgress = 0;
+            balloonRitchieProgress = 0;
             concreteManProgress = 0;
             random = new Random();
             base.Initialize();
+
         }
 
         protected override void LoadContent()
@@ -47,10 +72,52 @@ namespace Fnaf_Fan_Game
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
+            
             // TODO: Add your update logic here
 
-            base.Update(gameTime);
+            // === LOGIC FOR LOSING ===
+            if(energy == 0)
+            {
+                //screen goes dark
+                //tiger roar jumpscare
+                //transition to loss gamestate
+            }
+            if(ritchieProgress == 100)
+            {
+                //ritchie jumpscare
+                //transition to loss gamestate
+            }
+            if (roarieProgress == 100)
+            {
+                //roarie jumpscare
+                //transition to loss gamestate
+            }
+            if (balloonRitchieProgress == 100)
+            {
+                //balloon ritchie jumpscare
+                //transition to loss gamestate
+            }
+            if (concreteManProgress == 100)
+            {
+                //Concrete man jumpscare
+                //transition to loss gamestate
+            }
+            // +++ LOGIC FOR WINNING +++
+            if (time == endTime)
+                {
+                //display for having won the game
+                //transition to win gamestate
+            }
+            else
+                {
+                //game loop with all logic updates and controls.
+                }
+
+
+
+
+
+                    base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
@@ -58,6 +125,7 @@ namespace Fnaf_Fan_Game
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            
 
             base.Draw(gameTime);
         }
